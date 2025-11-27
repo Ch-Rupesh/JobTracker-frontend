@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8084/api/notifications';
+const API_URL = 'http://localhost:30083/api/notifications';
 
 const notificationService = {
   // ✅ Get all notifications (no userEmail filter)

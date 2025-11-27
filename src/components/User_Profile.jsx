@@ -44,7 +44,7 @@ const User_Profile = () => {
     try {
       const skillsArray = personalData.skills.split(',').map(s => s.trim()).filter(s => s);
       const payload = { ...personalData, skills: skillsArray, age: Number(personalData.age), pincode: Number(personalData.pincode) };
-      const response = await axios.post('http://localhost:8084/users/User_Personal_Details', payload);
+      const response = await axios.post('http://localhost:30083/users/User_Personal_Details', payload);
       setMessage('User Details saved: ' + response.data);
     } catch (error) {
       setMessage('Saving Details Failed: ' + (error.response?.data || error.message));
@@ -54,7 +54,7 @@ const User_Profile = () => {
   const handleQualificationSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8084/users/User_Qualification_Details', qualificationData);
+      const response = await axios.post('http://localhost:30083/users/User_Qualification_Details', qualificationData);
       setMessage('Qualification saved: ' + response.data);
     } catch (error) {
       setMessage('Saving Qualification Failed: ' + (error.response?.data || error.message));
@@ -71,7 +71,7 @@ const User_Profile = () => {
       const formData = new FormData();
       formData.append('email', resumeEmail);
       formData.append('file', resumeFile);
-      const response = await axios.post('http://localhost:8084/users/Resume', formData, {
+      const response = await axios.post('http://localhost:30083/users/Resume', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

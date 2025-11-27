@@ -14,7 +14,7 @@ export const NotificationProvider = ({ children }) => {
   useEffect(() => {
     const fetchNotifications = async () => {
       try {
-        const response = await axios.get(`http://localhost:8084/api/notifications/all`);
+        const response = await axios.get(`http://localhost:30083/api/notifications/all`);
         console.log("Notification response:", response.data);
         if (response.data) {
           setNotifications(response.data);
@@ -40,7 +40,7 @@ export const NotificationProvider = ({ children }) => {
       createdAt: new Date().toISOString(),
     };
     try {
-      const response = await axios.post("http://localhost:8084/api/notifications/add", newNotification);
+      const response = await axios.post("http://localhost:30083/api/notifications/add", newNotification);
       setNotifications(prev => [response.data, ...prev]);
       toast({ 
         title: newNotification.title, 
@@ -58,7 +58,7 @@ export const NotificationProvider = ({ children }) => {
 
   const markAsRead = async (id) => {
     try {
-      await axios.put(`http://localhost:8084/api/notifications/read/${id}`);
+      await axios.put(`http://localhost:30083/api/notifications/read/${id}`);
       setNotifications(prev => prev.map(n => n.id === id ? { ...n, read: true } : n));
     } catch (error) {
       console.error("Error marking as read:", error.response?.data || error.message);
@@ -72,7 +72,7 @@ export const NotificationProvider = ({ children }) => {
 
   const markAllAsRead = async () => {
     try {
-      await axios.put(`http://localhost:8084/api/notifications/mark-all-read`);
+      await axios.put(`http://localhost:30083/api/notifications/mark-all-read`);
       setNotifications(prev => prev.map(n => ({ ...n, read: true })));
     } catch (error) {
       console.error("Error marking all as read:", error.response?.data || error.message);
@@ -86,7 +86,7 @@ export const NotificationProvider = ({ children }) => {
 
   const deleteNotification = async (id) => {
     try {
-      await axios.delete(`http://localhost:8084/api/notifications/delete/${id}`);
+      await axios.delete(`http://localhost:30083/api/notifications/delete/${id}`);
       setNotifications(prev => prev.filter(n => n.id !== id));
     } catch (error) {
       console.error("Error deleting notification:", error.response?.data || error.message);

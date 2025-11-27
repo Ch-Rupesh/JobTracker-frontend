@@ -28,7 +28,7 @@ const EmployerSignUp = () => {
 
     try {
       // Replace URL with your signup API endpoint
-      const response = await fetch('http://localhost:8084/users/SignUp', {
+      const response = await fetch('http://localhost:30083/users/SignUp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

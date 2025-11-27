@@ -24,7 +24,7 @@ const JobList = ({ refreshFlag }) => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get("http://localhost:8084/api/jobs")
+    axios.get("http://localhost:30083/api/jobs")
       .then(res => {
         setJobs(res.data);
         setLoading(false);
@@ -82,7 +82,7 @@ const JobFilterWithUpload = ({ onJobAdded }) => {
     setError("");
     setSuccess("");
 
-    axios.post("http://localhost:8084/api/jobs", formData)
+    axios.post("http://localhost:30083/api/jobs", formData)
       .then(() => {
         setSuccess("Job added successfully.");
         setFormData(initial);

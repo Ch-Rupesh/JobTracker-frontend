@@ -28,7 +28,7 @@ const JobList = ({ minSalary }) => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await axios.get("http://localhost:8084/api/jobs");
+        const response = await axios.get("http://localhost:30083/api/jobs");
         setJobs(response.data);
       } catch (error) {
         setError("Error fetching jobs");
